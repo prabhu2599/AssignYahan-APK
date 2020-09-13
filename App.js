@@ -1,21 +1,52 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import Playscreen from "./src/playscreen";
+
+
 
 export default function App() {
+
+  const [play, setPlay] =  useState(false)
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    play ? (<Playscreen/>) : (
+      <View style={styles.container}>
+      <Text style={styles.header}>Assignments Yahan !!!</Text>
+      <Text style={styles.emojis}>🥺 🥱 😏</Text>
+      <View style= {styles.button}>
+      <Button onPress = {() => setPlay(true)} title = 'Assign Now'/>
+      </View>
+      </View>
+    )
+    
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  emojis: {
+    color: 'white',
+    fontSize: 100,
+  },
+  header: {
+    fontWeight: 'bold',
+    fontFamily: 'lucida grande',
+    fontSize: 35,
+    color: 'white',
+    //marginEnd: 100,
+  },
+  button: {
+    width: 350,
+    height: 100,
+    marginTop:50
+  }
+
 });
